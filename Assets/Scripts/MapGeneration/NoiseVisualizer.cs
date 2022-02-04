@@ -1,11 +1,4 @@
 using UnityEngine;
-
-[System.Serializable]
-public struct ColorBetween {
-    public float min, max;
-    public Color color;
-}
-
 public class NoiseVisualizer : MonoBehaviour {
     public int mapHeight, mapWidth;
 
@@ -19,7 +12,7 @@ public class NoiseVisualizer : MonoBehaviour {
         Texture2D texture = new Texture2D(mapWidth, mapHeight);
         
         foreach(var noisePass in GetComponents<NoisePass>()) {
-            if(noisePass.makePass) noisePass.MakePass(texture, mapWidth, mapHeight);
+            noisePass.MakePass(texture, mapWidth, mapHeight);
         }
 
         texture.filterMode = FilterMode.Point;
