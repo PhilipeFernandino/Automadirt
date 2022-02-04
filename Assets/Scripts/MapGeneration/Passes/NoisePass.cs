@@ -13,11 +13,19 @@ public class NoisePass : MonoBehaviour {
     public float frequency, fractalLacunarity, fractalGain, absoluteGain;
     public int fractalOctaves, seed;
     
+    public bool isDirty = true;
     private NoiseVisualizer noiseVisualizer;
+    private Texture2D lastTexture;
 
     private void Awake() {
         noiseVisualizer = GetComponent<NoiseVisualizer>();
         Debug.Assert(noiseVisualizer != null, "Noise visualizer não encontrado");
+    }
+
+    public Texture2D GetLastTexture() {
+        Texture2D texture = new Texture2D(lastTexture.width, lastTexture.height);
+        texture.SetPixels(lastTexture.GetPixels());
+        return texture;
     }
 
     public void MakePass(Texture2D texture, int mapWidth, int mapHeight) {
@@ -49,9 +57,17 @@ public class NoisePass : MonoBehaviour {
                 }
             }
         }
+
+        lastTexture = new Texture2D(texture.width, texture.height);
+        lastTexture.SetPixels(texture.GetPixels());
+
+        isDirty = false;
     }
 
     public void OnValidate() {
-        if (autoUpdate) noiseVisualizer.GenerateNoiseTexture(); 
+        isDirty = true;
+        if (autoUpdate) {
+            noiseVisualizer.GenerateNoiseTexture(); 
+        }
     }
 }

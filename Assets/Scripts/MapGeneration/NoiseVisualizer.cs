@@ -11,8 +11,19 @@ public class NoiseVisualizer : MonoBehaviour {
     public void GenerateNoiseTexture() {
         Texture2D texture = new Texture2D(mapWidth, mapHeight);
         
+        bool noisePassQueueIsDirty = false;
+
+        int i = 0;
         foreach(var noisePass in GetComponents<NoisePass>()) {
-            noisePass.MakePass(texture, mapWidth, mapHeight);
+            if (noisePass.isDirty)  { 
+                noisePassQueueIsDirty = true;
+            }
+            if (noisePassQueueIsDirty) {
+                Debug.Log("Calling new pass for " + i);
+                noisePass.MakePass(texture, mapWidth, mapHeight);
+            }
+            else texture = noisePass.GetLastTexture();
+            i++;
         }
 
         texture.filterMode = FilterMode.Point;
