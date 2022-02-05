@@ -22,12 +22,22 @@ public class NoisePassEditor : Editor {
 
             noisePass.frequency = EditorGUILayout.FloatField("Frequency", noisePass.frequency);
             noisePass.absoluteGain = EditorGUILayout.FloatField("Absolute Gain", noisePass.absoluteGain);
-            noisePass.heightGradient = EditorGUILayout.GradientField("Height Gradient", noisePass.heightGradient);
+            noisePass.heightCurve = EditorGUILayout.CurveField("Height Curve", noisePass.heightCurve);
 
-            if (!noisePass.rawPass) {
-                noisePass.colorGradient = EditorGUILayout.GradientField("Color Gradient", noisePass.colorGradient);
+            EditorGUILayout.Space();
+
+            #region Colorization
+            if (noisePass.rawPass == false) {
+                noisePass.colorization = (NoisePass.Colorization) EditorGUILayout.EnumPopup("Colorization", noisePass.colorization);
+                if (noisePass.colorization == NoisePass.Colorization.Gradient)
+                    noisePass.colorGradient = EditorGUILayout.GradientField("Color Gradient", noisePass.colorGradient);
+                else {
+                    noisePass.flatColor = EditorGUILayout.ColorField("Color", noisePass.flatColor);
+                    noisePass.colorStep = EditorGUILayout.FloatField("Color Step", noisePass.colorStep);
+                }
             }
-
+            #endregion
+            
             EditorGUILayout.Space();
             
             noisePass.noiseType = (FastNoiseLite.NoiseType) EditorGUILayout.EnumPopup("Noise Type", noisePass.noiseType);
