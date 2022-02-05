@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using System;
 
 [CustomEditor(typeof(NoisePass))]
 public class NoisePassEditor : Editor {
@@ -15,13 +14,17 @@ public class NoisePassEditor : Editor {
             noisePass.inverse = EditorGUILayout.Toggle("Inverse" , noisePass.inverse);
             
             EditorGUILayout.Space();
-
+            
+            EditorGUILayout.BeginHorizontal();
             noisePass.seed = EditorGUILayout.IntField("Seed", noisePass.seed);
+            if (GUILayout.Button("Randomize")) noisePass.seed = Random.Range(-int.MaxValue, int.MaxValue);
+            EditorGUILayout.EndHorizontal();
+
             noisePass.frequency = EditorGUILayout.FloatField("Frequency", noisePass.frequency);
             noisePass.absoluteGain = EditorGUILayout.FloatField("Absolute Gain", noisePass.absoluteGain);
             noisePass.heightGradient = EditorGUILayout.GradientField("Height Gradient", noisePass.heightGradient);
 
-            using (new EditorGUI.DisabledScope(noisePass.rawPass)) {
+            if (!noisePass.rawPass) {
                 noisePass.colorGradient = EditorGUILayout.GradientField("Color Gradient", noisePass.colorGradient);
             }
 

@@ -17,7 +17,7 @@ public class NoisePass : MonoBehaviour {
     private NoiseVisualizer noiseVisualizer;
     private Texture2D lastTexture;
 
-    private void Awake() {
+    private void OnEnable() {
         noiseVisualizer = GetComponent<NoiseVisualizer>();
         Debug.Assert(noiseVisualizer != null, "Noise visualizer não encontrado");
     }

@@ -15,13 +15,10 @@ public class NoiseVisualizer : MonoBehaviour {
 
         int i = 0;
         foreach(var noisePass in GetComponents<NoisePass>()) {
-            if (noisePass.isDirty)  { 
-                noisePassQueueIsDirty = true;
-            }
-            if (noisePassQueueIsDirty) {
-                Debug.Log("Calling new pass for " + i);
-                noisePass.MakePass(texture, mapWidth, mapHeight);
-            }
+
+            if (noisePass.isDirty)  noisePassQueueIsDirty = true;
+            
+            if (noisePassQueueIsDirty) noisePass.MakePass(texture, mapWidth, mapHeight);
             else texture = noisePass.GetLastTexture();
             i++;
         }
@@ -29,11 +26,5 @@ public class NoiseVisualizer : MonoBehaviour {
         texture.filterMode = FilterMode.Point;
         texture.Apply();
         meshRenderer.material.mainTexture = texture;
-    }
-
-    private void OnGUI() {
-        if(GUI.Button(new Rect(10,10,100,30), "Generate")) {
-            GenerateNoiseTexture();
-        }
     }
 }
