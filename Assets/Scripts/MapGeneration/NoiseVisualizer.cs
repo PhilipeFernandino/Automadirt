@@ -3,13 +3,15 @@ public class NoiseVisualizer : MonoBehaviour {
     public int mapHeight, mapWidth;
 
     private Renderer meshRenderer;  
+    private Texture2D texture;
 
     private void Start() {
         meshRenderer = GetComponent<Renderer>();
     }
 
     public void GenerateNoiseTexture() {
-        Texture2D texture = new Texture2D(mapWidth, mapHeight);
+        
+        texture = new Texture2D(mapWidth, mapHeight);
         
         bool noisePassQueueIsDirty = false;
 
@@ -26,5 +28,9 @@ public class NoiseVisualizer : MonoBehaviour {
         texture.filterMode = FilterMode.Point;
         texture.Apply();
         meshRenderer.material.mainTexture = texture;
+    }
+
+    public Texture2D GetTexture() {
+        return texture;
     }
 }

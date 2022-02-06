@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DirtTile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: 0200f4c55bef9e74088f6dd42e61aa12, type: 3}
-  m_Color: {r: 0.41509432, g: 0.22448759, b: 0.09946597, a: 1}
+  m_Color: {r: 0.6792453, g: 0.50248015, b: 0.38704166, a: 1}
   m_Transform:
     e00: 1
     e01: 0
