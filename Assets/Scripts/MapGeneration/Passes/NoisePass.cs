@@ -12,7 +12,7 @@ public class NoisePass : MonoBehaviour {
     public Gradient colorGradient = new Gradient();
     public Color flatColor = Color.white;
     
-    public AnimationCurve heightCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(10, 1));
+    public AnimationCurve heightCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
     
     public FastNoiseLite.NoiseType noiseType;
     public FastNoiseLite.FractalType fractalType;
@@ -57,7 +57,7 @@ public class NoisePass : MonoBehaviour {
                 //Calculando noiseValue
                 float noiseValue = Helper.TSimplexRange(noise.GetNoise(w, h));
                 noiseValue += absoluteGain;
-                noiseValue = noiseValue * heightCurve.Evaluate( ((float) h / mapHeight) * 10);
+                noiseValue = noiseValue * heightCurve.Evaluate((float) h / mapHeight);
                 if (inverse) noiseValue = 1 - noiseValue;
 
                 //Aplicando textura crua ou colorida

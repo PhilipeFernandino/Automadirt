@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &63718648
 Grid:
   m_ObjectHideFlags: 0
@@ -443,7 +443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &758393319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,17 +456,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cfd48dd41904a41ba13bc780eaba0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noiseVisualizer: {fileID: 1190653772}
+  tilemap: {fileID: 1205180044}
+  colorToTiles: []
+  area:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Size: {x: 0, y: 0, z: 0}
   mapHeight: 500
   mapWidth: 500
-  seed: 0
-  ugHeight: 0
-  simpFreq: 0
-  sfStonePb: 0.2
-  ugDirtPb: 0.2
-  dirt: {fileID: 11400000, guid: d9104127d7702d74397d38a1816e7fc1, type: 2}
-  stone: {fileID: 11400000, guid: ebb62bb956dcc594891f4391bb667fc4, type: 2}
-  iron: {fileID: 11400000, guid: b2cdb6805cac06643b655e783809eb28, type: 2}
-  tilemap: {fileID: 1205180044}
 --- !u!4 &758393320
 Transform:
   m_ObjectHideFlags: 0
@@ -833,7 +830,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1205180045}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
