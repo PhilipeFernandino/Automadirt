@@ -9,6 +9,7 @@ public class ColorToTile {
     public TileBase tile;
 }
 
+
 public class TilemapGeneration : MonoBehaviour {
 
     public NoiseVisualizer noiseVisualizer; 
@@ -17,11 +18,8 @@ public class TilemapGeneration : MonoBehaviour {
     public int mapHeight, mapWidth;
 
     private BoundsInt area;
-    
-    //TODO: Esse método aqui não vai rolar
-    //melhor pensar em um que gera os chunks ao redor do player
+
     public void GenerateFromTexture() {
-        
         int ctl = colorToTiles.Count;
         Texture2D texture = noiseVisualizer.GetTexture();
         TileBase[] tiles = new TileBase[mapWidth * mapHeight];
@@ -39,5 +37,5 @@ public class TilemapGeneration : MonoBehaviour {
             }
         }
         tilemap.SetTilesBlock(area, tiles);
-    }
+    }   
 }

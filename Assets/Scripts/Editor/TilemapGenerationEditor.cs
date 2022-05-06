@@ -13,7 +13,7 @@ public class TilemapGenerationEditor : Editor {
         if (GUILayout.Button("Clear all tiles")) {
             tilemapGeneration.tilemap.ClearAllTiles();
         }
-
+        
         base.OnInspectorGUI();
     }
 }

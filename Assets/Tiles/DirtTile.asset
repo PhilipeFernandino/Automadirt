@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: DirtTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: 0200f4c55bef9e74088f6dd42e61aa12, type: 3}
-  m_Color: {r: 0.6792453, g: 0.50248015, b: 0.38704166, a: 1}
+  m_Sprite: {fileID: 4018074224661003100, guid: 57117ce76b3604f499f04df5e2467919, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
